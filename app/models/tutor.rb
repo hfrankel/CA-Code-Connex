@@ -4,4 +4,6 @@ class Tutor < ApplicationRecord
   has_many :ratings
   has_many :technologies_tutors
   has_many :technologies, through: :technologies_tutors
+
+  enum experience: [:junior, :intermediate, :senior]
 end
