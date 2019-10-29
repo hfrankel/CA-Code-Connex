@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  timestamp: 2019-10-29 15:52:33
+  duration: 
+  cost: 
+  stripe: MyString
+  note: MyText
+  tutor: one
+  user: one
+
+two:
+  timestamp: 2019-10-29 15:52:33
+  duration: 
+  cost: 
+  stripe: MyString
+  note: MyText
+  tutor: two
+  user: two
