@@ -5,3 +5,112 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Separate into for loops for each model
+
+# push various ids into separate arrays
+
+
+
+# tutor_ids = Tutor.all.pluck(:id)
+# session_ids = Session.all.pluck(:id)
+# rating_ids = Rating.all.pluck(:id)
+
+# tutor_user_ids = (0...user_ids.length).sort_by{rand}
+
+
+for i in 1..20
+  tech_ids = Technology.all.pluck(:id)
+
+  tech = Technology.create(
+    name: Faker::ProgrammingLanguage.name
+  )
+  puts "Added #{tech.name}"
+end
+  
+for i in 1..30
+  user = User.new(
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 10, max_length: 20)
+  )
+  user.save!
+  puts "Created #{user.firstname}"
+end
+
+user_ids = User.all.pluck(:id)
+unique_user_ids = []
+
+while unique_user_ids.length < 10
+  unique_user_ids << user_ids.sample
+  unique_user_ids = unique_user_ids.uniq
+end
+
+for i in 1..10
+
+  # user_id = user_ids.sample
+  # user_ids.delete(user_id)
+  
+
+  tutor = Tutor.create(
+    pricing: rand(2000..30000),
+    experience: rand(0..2),
+    bio: Faker::Lorem.paragraph,
+    style: Faker::Hacker.say_something_smart,
+    active: rand(2) == 1,
+    maxduration: rand(15..120),
+    user_id: unique_user_ids[i]
+  )
+  puts "New tutor"
+end
+
+tutor_ids = Tutor.all.pluck(:id)
+
+
+for i in 1..20
+
+  tutor = tutor_ids.sample
+  user = user_ids.sample
+
+  while Tutor.find(tutor).user_id == user
+    user = user_ids.sample
+  end
+
+  session = Session.create(
+    timestamp: Faker::Time.forward(days: 23, period: :morning),
+    duration: rand(15..120),
+    cost: rand(500..60000),
+    stripe: Faker::Internet.password(min_length: 8, max_length: 8),
+    note: Faker::Quote.famous_last_words,
+    tutor_id: tutor,
+    user_id: user
+  )
+end
+
+session_ids = Session.all.pluck(:id)
+tutor_ids = 
+unique_session_ids = []
+
+for i in 1..20  
+
+  while unique_session_ids.length < 20
+    unique_session_ids << tutor_ids.sample
+    unique_session_ids = unique_tutor_ids.uniq
+  end
+
+  rating = Rating.create(
+    score: rand(1..5),
+    comment: Faker::Hacker.say_something_smart,
+    session_id: ,
+    tutor_id: 
+  )
+end
+
+ for i in 1..20 
+  techtutor = TechnologiesTutor.create(
+    tutor_id: rand(1..20),
+    technology_id: rand(1..20),
+    level: rand(0..2)
+  )
+end
