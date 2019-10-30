@@ -10,17 +10,8 @@
 
 # push various ids into separate arrays
 
-
-
-# tutor_ids = Tutor.all.pluck(:id)
-# session_ids = Session.all.pluck(:id)
-# rating_ids = Rating.all.pluck(:id)
-
-# tutor_user_ids = (0...user_ids.length).sort_by{rand}
-
-
 for i in 1..20
-  tech_ids = Technology.all.pluck(:id)
+  # tech_ids = Technology.all.pluck(:id)
 
   tech = Technology.create(
     name: Faker::ProgrammingLanguage.name
@@ -48,10 +39,6 @@ while unique_user_ids.length < 10
 end
 
 for i in 1..10
-
-  # user_id = user_ids.sample
-  # user_ids.delete(user_id)
-  
 
   tutor = Tutor.create(
     pricing: rand(2000..30000),
@@ -89,25 +76,29 @@ for i in 1..20
 end
 
 session_ids = Session.all.pluck(:id)
-tutor_ids = 
+tutor_ids = Session.all.pluck(:tutor_id)
 unique_session_ids = []
 
-for i in 1..20  
+while unique_session_ids.length < 20
+  unique_session_ids << session_ids.sample
+  unique_session_ids = unique_session_ids.uniq
+end
 
-  while unique_session_ids.length < 20
-    unique_session_ids << tutor_ids.sample
-    unique_session_ids = unique_tutor_ids.uniq
-  end
+for i in 1..20  
 
   rating = Rating.create(
     score: rand(1..5),
     comment: Faker::Hacker.say_something_smart,
-    session_id: ,
-    tutor_id: 
+    session_id: unique_session_ids[i],
+    tutor_id: tutor_ids.sample
   )
 end
 
- for i in 1..20 
+tutor_ids = Session.all.pluck(:tutor_id)
+tech_ids = Technology.all.pluck(:id)
+
+for i in 1..20
+
   techtutor = TechnologiesTutor.create(
     tutor_id: rand(1..20),
     technology_id: rand(1..20),
