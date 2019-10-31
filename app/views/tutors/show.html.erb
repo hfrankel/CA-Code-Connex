@@ -1,3 +1,40 @@
 <h1>This is the tutor show page</h1>
 
-<%= @tutor %>
+<ul>
+  <li><%= @tutor.user.firstname %> <%= @tutor.user.lastname %></li>
+  <li>Lead <%= @sessions_count %> sessions</li>
+  <li><%= @tutor.experience %> Dev</li>
+  <li><%= @tutor.bio %></li>
+  <li><%= @tutor.style %></li>
+  <li>$<%= @tutor.pricing / 100.00 %></li>
+  <li>Average Rating <%= @ratings_avg_score %></li>
+</ul>
+
+<%
+=begin%>
+ <% @technologies.each do |x| %>
+  <% @tech_level.each do |y| %>
+  <li><%= x %> <%= y.capitalize %></li>
+  <% end %>
+<% end %> 
+<%
+=end%>
+
+<h2>Skills</h2>
+
+  <h3>Master</h3>
+  <% @master_tech.each do |tech| %>
+    <%= tech.technology.name %>
+  <% end %>
+
+  <h3>Experienced</h3>
+  <% @experienced_tech.each do |tech| %>
+    <%= tech.technology.name %>
+  <% end %>
+
+  <h3>Fresh</h3>
+  <% @fresh_tech.each do |tech| %>
+    <%= tech.technology.name %>
+  <% end %>
+
+  <%= link_to  "Check Availability", tutors_path %>
