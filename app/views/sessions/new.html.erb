@@ -1,0 +1,30 @@
+<h1>Session Confirmation Page</h1>
+
+<h2><%= @tutor.user.firstname %> <%= @tutor.user.lastname %></h2>
+<p>Average Rating <%= @ratings_avg_score %></p>
+
+<%= form_with do |form| %>
+    <div>
+      <%= form.submit "Email" %>
+    </div>
+    <div>
+      <%= form.label :title, "Choose Date" %>
+      <%= select_date Date.today, prefix: :start_date %>
+    </div>
+    <div>
+      <%= form.label :title, "Start Time" %>
+      <%= form.time_field :title %>
+    </div>
+    <div>
+      <%= form.label :title, "What would you like to learn during the session?" %>
+      <%= form.text_area :title %>
+    </div>
+    <div>
+      <%= form.label :title, "Session Duration (mins)" %>
+      <%= form.select :desired_attribute, ["0", "15", "30", "45", "60"]%>
+    </div>
+    <div>
+      <%= form.submit "Submit" %>
+    </div>
+
+<% end %>
