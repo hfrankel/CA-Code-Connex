@@ -1,1 +1,19 @@
 <h1>This is the tutor search home page.</h1>
+
+<ul>
+  <% @tutors.each do |tutor| %>
+    <li>
+      <%
+=begin%>
+ <%= link_to  "#{tutor.user.firstname}", tutor_path %> 
+<%
+=end%>
+      <%= tutor.user.firstname %> <%= tutor.user.lastname %>
+    </li>
+    <li><%= tutor.experience %> Dev</li>
+    <li><%= tutor.bio %></li>
+    <li><%= tutor.style %></li>
+    <li>$<%= tutor.pricing / 100.00 %></li>
+    <li></li>
+  <% end %>
+</ul>
