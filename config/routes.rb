@@ -4,6 +4,6 @@ Rails.application.routes.draw do
 
   get "/", to: "pages#home", as: "root"
   get "/tutors", to: "tutors#index", as: "tutors"
-  get "/tutors/:id", to: "tutors#show"
+  get "/tutors/:id", to: "tutors#show", as: "tutor"
 
 end
