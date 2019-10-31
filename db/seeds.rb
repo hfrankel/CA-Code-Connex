@@ -11,7 +11,7 @@
 # push various ids into separate arrays
 
 for i in 1..20
-  # tech_ids = Technology.all.pluck(:id)
+  tech_ids = Technology.all.pluck(:id)
 
   tech = Technology.create(
     name: Faker::ProgrammingLanguage.name
