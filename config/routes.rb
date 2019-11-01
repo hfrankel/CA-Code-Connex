@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get "/", to: "pages#home", as: "root"
+  get "/pricing", to: "pages#pricing", as: "pricing"
+  get "/faq", to: "pages#faq", as: "faq"
   get "/tutors", to: "tutors#index", as: "tutors"
+  get "/tutors/connex", to: "tutors#connex", as: "connex_search"
   get "/tutors/:id", to: "tutors#show", as: "tutor"
   get "/tutors/:id/sessions/new", to: "sessions#new", as: "new_session"
   post "/tutors/:id/sessions", to: "sessions#create", as: "create_session"
