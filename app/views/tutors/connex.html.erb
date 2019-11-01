@@ -1,0 +1,30 @@
+<h1>Connex - Search For a Tutor</h1>
+
+<%= form_with do |form| %>
+  <div>
+    <%= form.label :title, "Tech" %>
+    <%= form.collection_check_boxes :technology_ids, @technologies, :id, :name %>
+  </div>
+  <div>
+  <%
+=begin%>
+ Want a few to checkbox options to show the tutor's knowledge base level for the various pieces
+ of tech i.e. fresh, experienced and master.
+<%
+=end%>
+  </div>
+  <div>
+    <%= form.label :title, "Dev Experience" %>
+    <%= form.select :desired_attribute, ["Junior", "Mid Level", "Senior"]%>
+  </div>
+  <div>
+    <%= form.label :title, "Tutor Gender" %>
+    <%= form.select :desired_attribute, ["Female", "Male", "Non-Binary"]%>
+  </div>
+  <div>
+    <%= form.label :title, "Pricing Max ($)" %>
+    <%= form.select :desired_attribute, ["15", "50", "100", "150", "200", "250", "300"]%>
+  </div>
+<% end %>
+
+<%= link_to  "Find Tutor", tutors_path %>
