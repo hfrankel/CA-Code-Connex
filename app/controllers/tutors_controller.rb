@@ -15,4 +15,9 @@ class TutorsController < ApplicationController
     @fresh_tech = @tutor.technologies_tutors.select { |i| i.level == "fresh" }
   end
 
+  def connex
+    @technologies = Technology.all
+
+  end
+
 end
