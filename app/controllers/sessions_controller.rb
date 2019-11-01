@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 
+before_action :authenticate_user!
+
+
   def new
     @session = Session.new
     @tutor = Tutor.includes(:user).find(params[:id])
@@ -9,7 +12,14 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @session = current_user.sessions.create(session_params)
 
+    if @session.errors.any?
+        # Do I need to set anything here?
+        render "new"
+    else
+        redirect_to sessions_path
+    end
   end
 
 end
