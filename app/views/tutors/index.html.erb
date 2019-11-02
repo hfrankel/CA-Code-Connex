@@ -1,12 +1,5 @@
-<h1>This is the tutor search home page.</h1>
+<h1>Tutors</h1>
 
-<ul>
-  <% @tutors.each do |tutor| %>
-    <li><%= link_to  "#{tutor.user.firstname} #{tutor.user.lastname}", tutor_path(tutor) %></li>
-    <li><%= tutor.experience.capitalize %> Dev</li>
-    <li><%= tutor.bio %></li>
-    <li><%= tutor.style %></li>
-    <li>$<%= tutor.pricing / 100.00 %></li>
-    <li></li>
-  <% end %>
-</ul>
+<div class="row">
+  <%= render @tutors %>
+</div>
