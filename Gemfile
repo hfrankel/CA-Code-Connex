@@ -68,3 +68,7 @@ gem "stripe", "~> 5.7"
 gem "faker", "~> 2.6"
 
 gem "normalize-rails", "~> 4.1"
+
+gem 'bootstrap', '~> 4.3.1'
+
+gem 'jquery-rails'
