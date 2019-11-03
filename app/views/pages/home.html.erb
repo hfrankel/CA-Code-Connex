@@ -1,3 +1,43 @@
 <%= provide(:home_active, "active") %>
+<main id="home">
 
-<h1>Home Page</h1>
+
+  <section class="jumbotron">
+    <h1 class="display-4">Why Code Connex?</h1>
+    <p class="lead">
+      Code Connex is a platform where you can enhance your coding skills with some of the best devs from around the world.
+
+      Take the next step in your coding journey.
+    </p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Create Account</a>
+  </section>
+
+
+  <div class="card-columns">
+    <div class="card" class="col-sm-6 col-lg-4">
+      <%= image_tag "home/student_testimonial", class: "card-img-top", alt: "portrait happy student" %>
+      <div class="card-body">
+        <h5 class="card-title">Robert Colborne - Student</h5>
+        <p class="card-text">
+         "Using Code Connex has quickly advanced my coding skills in a short space of time.
+          One on one sessions with an experienced dev has been incredibly beneficial to my development
+          as a programmer."
+        </p>
+        <a href="#" class="btn btn-primary">Find A Tutor</a>
+      </div>
+    </div>
+
+    <div class="card" class="col-sm-6 col-lg-4">
+      <%= image_tag "home/tutor_testimonial", class: "card-img-top", alt: "portrait happy student" %>
+      <div class="card-body">
+        <h5 class="card-title">Hamish Lees - Tutor</h5>
+        <p class="card-text">
+          "It's been a joy to share my knowledge with future devs. I've had fantastic sessions with
+          every student so far and highly recommend it to anyone wanting to get a better grasp
+          of any programming concept."
+        </p>
+        <a href="#" class="btn btn-primary">Start Learning</a>
+      </div>
+    </div>
+  </div>
+</main>
