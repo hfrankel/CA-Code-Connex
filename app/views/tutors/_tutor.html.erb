@@ -1,11 +1,11 @@
-<div class="col-sm-6 col-lg-4">
+<div id="tutors" class="col-sm-6 col-lg-4">
   <div class="card" style="width: 18rem;">
     <div class="card-block">
-    <img src="..." class="card-img-top" alt="...">
+    <%= image_tag tutor.user.pic, class: "card-img-top", alt: "Fake profile photos using cartoon robots" %>
     <div class="card-body">
       <h5 class="card-title"><%= tutor.user.firstname %> <%= tutor.user.lastname %></h5>
       <p class="card-text"><%= tutor.bio %></p>
-      <%= link_to "#{tutor.user.firstname}", tutor_path(:id => tutor.id), class: "btn btn-primary" %>
+      <%= link_to "Learn From #{tutor.user.firstname}", tutor_path(:id => tutor.id), class: "btn btn-primary" %>
     </div>
     </div>
   </div>
