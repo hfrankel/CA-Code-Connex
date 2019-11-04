@@ -27,4 +27,4 @@
     <%= tech.technology.name %>
   <% end %>
 
-  <%= link_to  "Check Availability", new_session_path %>
+  <%= link_to  "Check Availability", new_session_path(:tutor_id => @tutor.id) %>
