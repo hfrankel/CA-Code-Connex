@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :sessions
   has_one_attached :picture
+  include Gravtastic
+  gravtastic
 end
