@@ -73,4 +73,6 @@ gem 'bootstrap', '~> 4.3.1'
 
 gem 'jquery-rails'
 
-gem "gravtastic", "~> 3.2"
+gem "aws-sdk-s3", "~> 1.53"
+
+gem "down", "~> 5.0"
