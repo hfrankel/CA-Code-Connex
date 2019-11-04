@@ -26,6 +26,10 @@ for i in 1..30
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 10, max_length: 20)
   )
+
+  temp_user_file = Down.download(Faker::Avatar.image + "?random=" + rand(1..1000).to_s)
+  user.pic.attach(io: temp_user_file, filename: File.basename(temp_user_file.path))
+
   user.save!
   puts "Created #{user.firstname}"
 end
@@ -100,7 +104,7 @@ tech_ids = Technology.all.pluck(:id)
 for i in 1..20
 
   techtutor = TechnologiesTutor.create(
-    tutor_id: rand(1..20),
+    tutor_id: rand(1..10),
     technology_id: rand(1..20),
     level: rand(0..2)
   )
