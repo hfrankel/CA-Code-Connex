@@ -5,8 +5,10 @@
     <div class="card-body">
       <h5 class="card-title"><%= tutor.user.firstname %> <%= tutor.user.lastname %></h5>
       <p class="card-text"><%= tutor.bio %></p>
-      <a href="#" class="btn btn-primary">Learn From <%= tutor.user.firstname %></a>
+      <%= link_to "#{tutor.user.firstname}", tutor_path(:id => tutor.id), class: "btn btn-primary" %>
     </div>
     </div>
   </div>
 </div>
+
+
