@@ -1,0 +1,28 @@
+<main id="tutor-profile-edit">
+  <%= form_with(model: @tutor, url: update_account_path, local: true) do |form| %>
+    <h2>Tutor Profile</h2>
+    <ul class="custom-my-list">
+      <div>
+        <li><%= form.label :pricing, "Hourly Pricing ($)" %></li>
+        <li><%= form.text_field :pricing %></li>
+      </div>
+      <div>
+        <li><%= form.label :experience, "Experience" %></li>
+        <li><%= form.select :experience, ["Junior", "Mid-Level", "Senior"] %></li>
+      </div>
+      <div>
+        <li><%= form.label :bio, "Bio" %></li>
+        <li><%= form.text_area :bio %></li>
+      </div>
+      <div>
+        <li><%= form.label :style, "Teaching Style" %></li>
+        <li><%= form.text_area :style %></li>
+      </div>
+      <div>
+        <li><%= form.label :maxduration, "Max Session Duration" %></li>
+        <li><%= form.text_field :maxduration %></li>
+      </div>
+    </ul>
+
+  <% end %>
+</main>
