@@ -1,1 +1,23 @@
-<%= @user.firstname %>
+<%= provide(:account_active, "active") %>
+
+<h2>User Profile</h2>
+<div>
+  <p>First Name: <%= @user.firstname %></p>
+  <p>Surname: <%= @user.lastname %></p>
+  <p>Email: <%= @user.email %></p>
+  <% if @active_tutor.empty? %>
+    <%= "Tutor: Inactive" %>
+  <% else %>
+  <h2>Tutor Profile</h2>
+    <hr>
+    <p><%= "Tutor: Active" %></p>
+    <p>Hourly Pricing: $<%= @tutor.pricing / 100.0 %></p>
+    <p>Bio: <%= @tutor.bio %></p>
+    <p>Teaching Style: <%= @tutor.style %></p>
+    <p>Max Session Duration: <%= @tutor.maxduration %> mins</p>
+  <% end %>
+</div>
+
+<%= link_to  "Edit User Account", edit_user_registration_path(:id => @user.id), class: "btn btn-primary btn-lg" %>
+<%= link_to  "Edit Tutor Account", edit_account_path(:id => @user.id), class: "btn btn-primary btn-lg" %>
+
