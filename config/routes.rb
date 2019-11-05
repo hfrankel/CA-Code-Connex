@@ -21,7 +21,8 @@ Rails.application.routes.draw do
 
   
   get "/user_account", to: "accounts#show", as: "show_account"
-  patch "/account", to: "account#update", as: "update_account"
-  delete "/account", to: "account#delete", as: "delete_account"
+  get "/account/:id/edit", to: "accounts#edit", as: "edit_account"
+  patch "/account/:id", to: "account#update", as: "update_account"
+  delete "/account/:id", to: "account#destroy", as: "delete_account"
 
 end
