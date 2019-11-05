@@ -1,7 +1,14 @@
 class TutorsController < ApplicationController
   
   def index
-    @tutors = Tutor.includes(:user).all
+    # \@tutors = Tutor.includes(:user).all
+
+    if @search = params[:search]
+      @tutors = Tutor.joins(:user).where("users.firstname LIKE ?", "%#{@search}%")
+    else
+      @tutors = Tutor.includes(:user).all
+    end
+  
   end
 
   def show
