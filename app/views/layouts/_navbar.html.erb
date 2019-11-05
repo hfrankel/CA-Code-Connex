@@ -12,10 +12,10 @@
         <%= link_to "Connex", connex_search_path, class: "nav-link #{yield(:connex_active)}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Pricing", pricing_path, class: "nav-link #{yield(:pricing_active)}" %>
+        <%= link_to "FAQ", faq_path, class: "nav-link #{yield(:faq_active)}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "FAQ", faq_path, class: "nav-link #{yield(:faq_active)}" %>
+        <%= link_to "Account", show_account_path, class: "nav-link #{yield(:account_active)}" %>
       </li>
       <li class="nav-item">
         <% if user_signed_in? %>
