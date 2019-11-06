@@ -1,9 +1,9 @@
-<h1>This is the tutor show page</h1>
+<h1><%= @tutor.user.firstname %> <%= @tutor.user.lastname %></h1>
+<%= image_tag @tutor.user.pic, alt: "Fake profile photos using cartoon robots" %>
 
 <ul>
-  <li><%= @tutor.user.firstname %> <%= @tutor.user.lastname %></li>
   <li>Lead <%= @sessions_count %> sessions</li>
-  <li><%= @tutor.experience %> Dev</li>
+  <li><%= @tutor.experience.capitalize %> Dev</li>
   <li><%= @tutor.bio %></li>
   <li><%= @tutor.style %></li>
   <li>$<%= @tutor.pricing / 100.00 %></li>
