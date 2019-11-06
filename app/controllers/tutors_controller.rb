@@ -8,6 +8,8 @@ class TutorsController < ApplicationController
     else
       @tutors = Tutor.includes(:user).all
     end
+
+  
   
   end
 
