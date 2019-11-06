@@ -3,21 +3,16 @@
     margin-top: 20px;
   }
   .card-columns {
-    display: flex;
-    flex-direction: column;
+  flex-direction: column;
   }
   .card {
     border: none;
-  }
-  .btn-lg {
-    font-size: 0.8rem;
   }
 }
 
 @media screen and (min-width: 768px) {
   #home {
     .card-columns {
-      display: flex;
       flex-direction: row;
     }
   }
