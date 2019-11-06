@@ -9,35 +9,36 @@
 
       Take the next step in your coding journey.
     </p>
-    <%= link_to  "Create Account", new_user_registration_path, class: "btn btn-primary btn-lg" %>
+    <%= link_to  "Create Account", new_user_registration_path, class: "btn btn-primary" %>
   </section>
 
+  <section class="custom-card-home">
+    <div class="card-columns">
+      <div class="card" class="col-sm-6 col-lg-4">
+        <%= image_tag "home/student_testimonial", class: "card-img-top", alt: "portrait happy student" %>
+        <div class="card-body">
+          <h5 class="card-title">Robert Colborne - Student</h5>
+          <p class="card-text">
+          "Using Code Connex has quickly advanced my coding skills in a short space of time.
+            One on one sessions with an experienced dev has been incredibly beneficial to my development
+            as a programmer."
+          </p>
+          <%= link_to  "Find A Tutor", connex_search_path, class: "btn btn-primary" %>
+        </div>
+      </div>
 
-  <div class="card-columns">
-    <div class="card" class="col-sm-6 col-lg-4">
-      <%= image_tag "home/student_testimonial", class: "card-img-top", alt: "portrait happy student" %>
-      <div class="card-body">
-        <h5 class="card-title">Robert Colborne - Student</h5>
-        <p class="card-text">
-         "Using Code Connex has quickly advanced my coding skills in a short space of time.
-          One on one sessions with an experienced dev has been incredibly beneficial to my development
-          as a programmer."
-        </p>
-        <%= link_to  "Find A Tutor", connex_search_path, class: "btn btn-primary btn-lg" %>
+      <div class="card" class="col-sm-6 col-lg-4">
+        <%= image_tag "home/tutor_testimonial", class: "card-img-top", alt: "portrait happy student" %>
+        <div class="card-body">
+          <h5 class="card-title">Hamish Lees - Tutor</h5>
+          <p class="card-text">
+            "It's been a joy to share my knowledge with future devs. I've had fantastic sessions with
+            every student so far and highly recommend it to anyone wanting to get a better grasp
+            of any programming concept."
+          </p>
+          <%= link_to  "Share Your Knowledge", new_user_session_path, class: "btn btn-primary" %>
+        </div>
       </div>
     </div>
-
-    <div class="card" class="col-sm-6 col-lg-4">
-      <%= image_tag "home/tutor_testimonial", class: "card-img-top", alt: "portrait happy student" %>
-      <div class="card-body">
-        <h5 class="card-title">Hamish Lees - Tutor</h5>
-        <p class="card-text">
-          "It's been a joy to share my knowledge with future devs. I've had fantastic sessions with
-          every student so far and highly recommend it to anyone wanting to get a better grasp
-          of any programming concept."
-        </p>
-        <%= link_to  "Share Your Knowledge", new_user_session_path, class: "btn btn-primary btn-lg" %>
-      </div>
-    </div>
-  </div>
+  </section>
 </main>
