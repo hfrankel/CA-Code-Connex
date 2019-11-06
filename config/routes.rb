@@ -19,10 +19,11 @@ Rails.application.routes.draw do
   # get "/tutors/:id/sessions/show/:id", to: "sessions#show", as: "show_session"
 
 
-  
+  get "/tutor_account/new", to: "accounts#newtutor", as: "new_tutor_account"
+  post "/tutor_account", to: "accounts#createtutor"
   get "/user_account", to: "accounts#show", as: "show_account"
   get "/account/:id/edit", to: "accounts#edit", as: "edit_account"
-  patch "/account/:id", to: "account#update", as: "update_account"
-  delete "/account/:id", to: "account#destroy", as: "delete_account"
+  patch "/account/:id", to: "accounts#update", as: "update_account"
+  delete "/account/:id", to: "accounts#destroy", as: "delete_account"
 
 end
