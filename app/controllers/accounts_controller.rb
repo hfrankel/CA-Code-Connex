@@ -1,5 +1,18 @@
 class AccountsController < ApplicationController
 
+  before_action :set_tutor, only: [:edit, :update]
+
+  def newtutor
+    @tutor = Tutor.new
+  end
+
+
+  def createtutor
+
+
+  end
+
+
   def show
     if current_user == nil
       redirect_to new_user_session_path
@@ -11,16 +24,24 @@ class AccountsController < ApplicationController
   end
 
   def update
-
+    if @tutor.update
+      redirect_to show_account_path(params[:id])
+    end
   end
 
   def edit
     @user = current_user
-    @tutor = Tutor.find_by(user_id: current_user.id)
   end
 
   def delete
 
   end
+
+  private
+
+  def set_tutor
+    @tutor = Tutor.find_by(user_id: current_user.id)
+  end
+
 
 end
