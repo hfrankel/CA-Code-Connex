@@ -9,19 +9,19 @@
         <%= link_to "Home", root_path, class: "nav-link #{yield(:home_active)}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Connex", connex_search_path, class: "nav-link #{yield(:connex_active)}" %>
+        <%= link_to "Connex", connex_search_path, class: "nav-item nav-link #{yield(:connex_active)}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "FAQ", faq_path, class: "nav-link #{yield(:faq_active)}" %>
+        <%= link_to "FAQ", faq_path, class: "nav-item nav-link #{yield(:faq_active)}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Account", show_account_path, class: "nav-link #{yield(:account_active)}" %>
+        <%= link_to "Account", show_account_path, class: "nav-item nav-link #{yield(:account_active)}" %>
       </li>
       <li class="nav-item">
         <% if user_signed_in? %>
-          <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
         <% else %>
-          <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Log In", new_user_session_path, class: "nav-item nav-link" %>
         <% end %>
       </li>
     </ul>
