@@ -18,9 +18,12 @@ Rails.application.routes.draw do
   post "/tutors/tutor_id/sessions", to: "sessions#create", as: "create_session"
   # get "/tutors/:id/sessions/show/:id", to: "sessions#show", as: "show_session"
 
+  get "/sessions/success", to: "sessions#success", as: "success_sessions"
+  post "/sessions/webhook", to: "sessions#webhook", as: "session"
+  get "/sessions/:id", to: "sessions#show", as: "show_sessions"
 
   get "/tutor_account/new", to: "accounts#newtutor", as: "new_tutor_account"
-  post "/tutor_account", to: "accounts#createtutor"
+  post "/tutor_account", to: "accounts#createtutor", as: "create_tutor_account"
   get "/user_account", to: "accounts#show", as: "show_account"
   get "/account/:id/edit", to: "accounts#edit", as: "edit_account"
   patch "/account/:id", to: "accounts#update", as: "update_account"
