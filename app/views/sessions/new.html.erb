@@ -1,22 +1,24 @@
 <h1>Session Confirmation Page</h1>
 
-<%= form_with( model: @session, url: create_session_path) do |form| %>
-    
-    <div>
-      <%= form.label :timestamp, "Choose Session Date and Time" %>
-      <%= datetime_select("session", "timestamp") %>
-    </div>
-    <div>
-      <%= form.label :note, "What would you like to learn during the session?" %>
-      <%= form.text_area :note %>
-    </div>
-    <div>
-      <%= form.label :duration, "Session Duration (mins)" %>
-      <%= form.select :duration, ["0", "15", "30", "45", "60"]%>
-    </div>
-    <div>
+<%= bootstrap_form_with( model: @session, url: create_session_path) do |form| %>
+
+      <%= form.datetime_field :timestamp, label: "Choose Date and Time" %>
+      <%= form.text_area :note, label: "What would you like to learn during the session?" %>
+      <%= form.number_field :duration, label: "Session Duration (mins)" %>
       <%= form.hidden_field :tutor_id, :value => params[:tutor_id] %> 
-      <%= form.submit "Confirm Booking", class: "btn btn-primary btn-lg" %>
-    </div>
 
 <% end %>
+
+<button data-stripe='buy' class="btn btn-primary">Purchase</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
+    const stripe = Stripe("<%= Stripe.api_key = Rails.application.credentials.dig(:stripe, :public) %>");
+    
+    stripe.redirectToCheckout({
+      sessionId: "<%= @session_id %>"
+    });
+  })
+</script>
