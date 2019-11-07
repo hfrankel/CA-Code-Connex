@@ -1,8 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">Code Connex</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container">
+    <a class="navbar-brand" href="/">Code Connex</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -19,12 +21,15 @@
       </li>
       <li class="nav-item">
         <% if user_signed_in? %>
-          <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
+          <%= link_to(destroy_user_session_path, method: :delete, class: "nav-item nav-link") do %>
+            Log&nbsp;Out
+          <% end %>
         <% else %>
-          <%= link_to "Log In", new_user_session_path, class: "nav-item nav-link" %>
+          <%= link_to(new_user_session_path, class: "nav-item nav-link") do %>
+            Log&nbsp;In
+          <% end %>
         <% end %>
       </li>
     </ul>
   </div>
 </nav>
-
