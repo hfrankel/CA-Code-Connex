@@ -1,28 +1,17 @@
 <main id="tutor-profile-edit">
-  <%= form_with(model: @tutor, url: update_account_path, local: true) do |form| %>
-    <h2>Tutor Profile</h2>
-      <div>
-        <%= form.label :pricing, "Hourly Pricing ($)" %>
-        <%= form.number_field :pricing, value: '%.2f' % (@tutor.pricing / 100.0), min: 0, step: 0.01 , class: "form-control" %>
-      </div>
-      <div class="form-group">
-        <%= form.label :experience, "Experience" %><br />
-        <%= form.select :experience, ["Junior", "Mid-Level", "Senior"], class: "form-control" %>
-      </div>
-      <div>
-        <%= form.label :bio, "Bio" %>
-        <%= form.text_area :bio, class: "form-control" %>
-      </div>
-      <div>
-        <%= form.label :style, "Teaching Style" %>
-        <%= form.text_area :style, class: "form-control" %>
-      </div>
-      <div>
-        <%= form.label :maxduration, "Max Session Duration (mins)" %>
-        <%= form.text_field :maxduration, class: "form-control" %>
-      </div>
-      <div class="actions">
-        <%= form.submit "Update", class: "btn btn-primary" %>
-      </div>
+
+<h2>Tutor Profile</h2>
+
+  <%= bootstrap_form_with(model: @tutor, url: update_account_path, local: true) do |f| %>
+    <%= f.number_field :pricing, label: "Hourly Pricing ($)" %>
+    <%= f.select :experience, @experiences.map { |experience| [experience.capitalize, experience]} %>
+    <%= f.text_area :bio %>
+    <%= f.text_area :style, label: "Teaching Style" %>
+    <%= f.number_field :maxduration, label: "Max Session Duration (mins)" %>
+    <%= f.collection_check_boxes :technologies, Technology.all, :id, :name %>
+    <%= f.submit "Confirm", class: "btn-primary btn" %>
   <% end %>
 </main>
+
+
+
