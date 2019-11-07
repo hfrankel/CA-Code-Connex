@@ -5,5 +5,5 @@ class Tutor < ApplicationRecord
   has_many :technologies_tutors
   has_many :technologies, through: :technologies_tutors
 
-  enum experience: [:junior, :mid, :senior]
+  enum experience: { junior: 0, mid: 1, senior: 2 }
 end
