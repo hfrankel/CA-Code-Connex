@@ -11,10 +11,16 @@
   <h2>Tutor Profile</h2>
     <hr>
     <p><%= "Tutor: Active" %></p>
-    <p>Hourly Pricing: $<%= @tutor.pricing / 100.0 %></p>
+    <p>Hourly Pricing: AUD $<%= @tutor.pricing %>
+    <p>Experience: <%= @tutor.experience.capitalize %></p>
     <p>Bio: <%= @tutor.bio %></p>
     <p>Teaching Style: <%= @tutor.style %></p>
     <p>Max Session Duration: <%= @tutor.maxduration %> mins</p>
+    <p>Technologies Studied: <% @tutor.technologies.each do |tech| %>
+      <ul>
+        <li><%= "#{tech.name}" %></li>
+      </ul>
+    <% end %>
   <% end %>
 </div>
 
@@ -25,4 +31,3 @@
 <% else %>
   <%= link_to "Become A Tutor", new_tutor_account_path(:id => @user.id), class: "btn btn-primary" %> 
 <% end %>
-
