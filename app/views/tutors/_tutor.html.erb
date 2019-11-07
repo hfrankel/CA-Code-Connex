@@ -2,11 +2,11 @@
   <div id="tutors" class="col-sm-6 col-lg-4">
     <div class="card" style="width: 18rem;">
       <div class="card-block">
-      <% if tutor.user.pic.attached? %>
-        <%= image_tag tutor.user.pic, class: "card-img-top", alt: "Fake profile photos using cartoon robots" %>
-      <% else %>
-        <%= image_tag "tutors/bruce_lee", size: "300x300", class: "card-img-top", alt: "Bruce Lee silhouette profile pic" %>
-      <% end %>
+        <% if tutor.user.pic.attached? %>
+          <%= image_tag tutor.user.pic, class: "card-img-top", alt: "Fake profile photos using cartoon robots" %>
+        <% else %>
+          <%= image_tag "tutors/bruce_lee", size: "300x300", class: "card-img-top", alt: "Bruce Lee silhouette profile pic" %>
+        <% end %> 
       <div class="card-body">
         <h5 class="card-title"><%= tutor.user.firstname %> <%= tutor.user.lastname %></h5>
         <p class="card-text"><%= tutor.bio %></p>
