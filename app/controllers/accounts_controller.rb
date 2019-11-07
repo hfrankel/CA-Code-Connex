@@ -1,14 +1,26 @@
 class AccountsController < ApplicationController
 
   before_action :set_tutor, only: [:edit, :update]
+  before_action :set_experiences, only: [:newtutor, :edit]
 
   def newtutor
     @tutor = Tutor.new
+    if @tutor.save
+      redirect_to show_account_path
+    else
+      puts "ERROR!!!!"
+    end
   end
 
 
   def createtutor
+    @tutor = current_user.create_tutor(tutor_params)
 
+    if @tutor.errors.any?
+      render "newtutor"
+    else 
+      redirect_to show_account_path
+    end
 
   end
 
@@ -24,8 +36,11 @@ class AccountsController < ApplicationController
   end
 
   def update
-    if @tutor.update
-      redirect_to show_account_path(params[:id])
+    if @tutor.update(tutor_params)
+      redirect_to show_account_path
+    else
+      redirect_to show_account_path
+      puts "Could not update!"
     end
   end
 
@@ -43,5 +58,17 @@ class AccountsController < ApplicationController
     @tutor = Tutor.find_by(user_id: current_user.id)
   end
 
+  def set_experiences
+    @experiences = Tutor.experiences.keys
+  end
+
+  def tutor_params
+    params.require(:tutor).permit(:pricing, :experience, :bio, :style, :maxduration, technology_ids: [])
+  end
+
+  # Convert pricing
+  # def translate_params
+  #   params[:tutor][:experience] = (params[:tutor][:experience].downcase)
+  # end
 
 end
