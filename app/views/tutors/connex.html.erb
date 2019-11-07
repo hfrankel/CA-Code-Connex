@@ -1,24 +1,11 @@
 <%= provide(:connex_active, "active") %>
 
-<h1>Connex - Search For a Tutor</h1>
+<h1>Connex - Find A Tutor</h1>
 
-<%= form_with do |form| %>
-  <div>
-    <%= form.label :title, "Tech" %>
-    <%= form.collection_check_boxes :technology_ids, @technologies, :id, :name %>
-  </div>
-  <div>
-    <%= form.label :title, "Dev Experience" %>
-    <%= form.select :desired_attribute, ["Junior", "Mid Level", "Senior"]%>
-  </div>
-  <div>
-    <%= form.label :title, "Tutor Gender" %>
-    <%= form.select :desired_attribute, ["Female", "Male", "Non-Binary"]%>
-  </div>
-  <div>
-    <%= form.label :title, "Pricing Max ($)" %>
-    <%= form.select :desired_attribute, ["15", "50", "100", "150", "200", "250", "300"]%>
-  </div>
+<%= bootstrap_form_with do |f| %>
+  <%= f.number_field :pricing, label: "Max Hourly Pricing ($)" %>
+  <%= f.select :experience, Experience: ["Junior", "Mid Level", "Senior"] %>
+  <%= f.collection_check_boxes :technologies, Technology.all, :id, :name %>
+
+  <%= f.submit "Search", class: "btn-primary btn" %>
 <% end %>
-
-<%= link_to  "Find Tutor", tutors_path %>
