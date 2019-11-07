@@ -15,7 +15,7 @@
 
 <script>
   document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
-    const stripe = Stripe("<%= Stripe.api_key = Rails.application.credentials.dig(:stripe, :public) %>");
+    const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
     
     stripe.redirectToCheckout({
       sessionId: "<%= @session_id %>"
