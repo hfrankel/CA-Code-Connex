@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 before_action :authenticate_user!
-skip_before_action :verif y_authenticity_token, only: [:webhook]
+skip_before_action :verify_authenticity_token, only: [:webhook]
 
 
   def new
@@ -14,6 +14,7 @@ skip_before_action :verif y_authenticity_token, only: [:webhook]
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
+      customer_email: current_user.email,
       line_items: [{
         name: "Tutoring Session",
         description: "Here is a session",
