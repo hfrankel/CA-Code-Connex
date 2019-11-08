@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 before_action :authenticate_user!
-skip_before_action :verify_authenticity_token, only: [:webhook]
 
 
   def new
@@ -19,7 +18,7 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
 
     @tutor_id = params[:tutor_id]
     @tutor = Tutor.find(@tutor_id)
-    @session_cost = @tutor.pricing - (params[:duration].to_i + 26000)
+    @session_cost = @tutor.pricing + (params[:duration].to_i)
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -33,7 +32,9 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
       }],
       payment_intent_data: {
         metadata: {
-          user_id: current_user.id
+          user_id: current_user.id,
+          tutor_id: params[:tutor_id],
+          cost: @session_cost
         }
       },
       success_url: root_url + "sessions/success",
@@ -63,13 +64,6 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
 
   def success
 
-  end
-
-  def webhook
-    puts params
-
-
-    render plain: ""
   end
 
 
