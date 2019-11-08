@@ -17,7 +17,7 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
       customer_email: current_user.email,
       line_items: [{
         name: "Tutoring Session",
-        description: "Here is a session",
+        description: "Session with #{@tutor.user.firstname}",
         amount: @tutor.pricing,
         currency: 'aud',
         quantity: 1,
@@ -28,7 +28,7 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
         }
       },
       success_url: root_url + "sessions/success",
-      cancel_url: root_url,
+      cancel_url: root_url
     )
 
     @session_id = session.id
@@ -57,6 +57,9 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
 
   def webhook
     puts params
+
+
+    render plain: ""
   end
 
 
