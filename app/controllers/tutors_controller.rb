@@ -10,8 +10,6 @@ class TutorsController < ApplicationController
 
   def show
     @tutor = Tutor.includes(:technologies_tutors, :technologies).find(params[:id])
-    scores = Tutor.find(params[:id]).ratings.pluck(:score)
-    @ratings_avg_score = scores.sum / scores.count.to_f
     @sessions_count = Tutor.find(params[:id]).sessions.pluck(:id).count
 
     @master_tech = @tutor.technologies_tutors.select { |i| i.level == "master" }
