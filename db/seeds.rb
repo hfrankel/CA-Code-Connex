@@ -45,7 +45,7 @@ end
 for i in 1..10
 
   tutor = Tutor.create(
-    pricing: rand(2000..30000),
+    pricing: rand(15..400),
     experience: rand(0..2),
     bio: Faker::Lorem.paragraph,
     style: Faker::Hacker.say_something_smart,
