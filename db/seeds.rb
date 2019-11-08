@@ -88,16 +88,6 @@ while unique_session_ids.length < 20
   unique_session_ids = unique_session_ids.uniq
 end
 
-for i in 1..20  
-
-  rating = Rating.create(
-    score: rand(1..5),
-    comment: Faker::Hacker.say_something_smart,
-    session_id: unique_session_ids[i],
-    tutor_id: tutor_ids.sample
-  )
-end
-
 tutor_ids = Session.all.pluck(:tutor_id)
 tech_ids = Technology.all.pluck(:id)
 
