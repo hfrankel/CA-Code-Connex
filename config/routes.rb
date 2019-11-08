@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "/tutors/:id", to: "tutors#show", as: "tutor"
   get "/tutors/tutor_id/sessions/new", to: "sessions#new", as: "new_session"
   post "/tutors/tutor_id/sessions", to: "sessions#create", as: "create_session"
-  # get "/tutors/:id/sessions/show/:id", to: "sessions#show", as: "show_session"
+  get "/tutors/tutor_id/sessions/confirm", to: "sessions#confirm", as: "confirm_session"
 
   get "/sessions/success", to: "sessions#success", as: "success_sessions"
   post "/sessions/webhook", to: "sessions#webhook", as: "session"
