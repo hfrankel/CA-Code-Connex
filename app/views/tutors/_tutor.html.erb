@@ -5,7 +5,7 @@
         <% if tutor.user.pic.attached? %>
           <%= image_tag tutor.user.pic, class: "card-img-top", alt: "Fake profile photos using cartoon robots" %>
         <% else %>
-          <%= image_tag "tutors/bruce_lee", size: "300x300", class: "card-img-top", alt: "Bruce Lee silhouette profile pic" %>
+          <%= image_tag "tutors/bruce_lee.jpg", size: "300x300", class: "card-img-top", alt: "Bruce Lee silhouette profile pic" %>
         <% end %> 
       <div class="card-body">
         <h5 class="card-title"><%= tutor.user.firstname %> <%= tutor.user.lastname %></h5>
