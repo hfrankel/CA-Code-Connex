@@ -2,7 +2,7 @@
 
 <h1>Connex - Find A Tutor</h1>
 
-<%= bootstrap_form_with do |f| %>
+<%= bootstrap_form_with( url: tutors_path, method: :get, local: true) do |f| %>
   <%= f.number_field :pricing, label: "Max Hourly Pricing ($)" %>
   <%= f.select :experience, Experience: ["Junior", "Mid Level", "Senior"] %>
   <%= f.collection_check_boxes :technologies, Technology.all, :id, :name %>
