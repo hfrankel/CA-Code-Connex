@@ -12,13 +12,22 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
     # @ratings_avg_score = scores.sum / scores.count.to_f
     # @sessions_count = Tutor.find(params[:id]).sessions.pluck(:id).count
 
+
+  end
+
+  def confirm
+
+    @tutor_id = params[:tutor_id]
+    @tutor = Tutor.find(@tutor_id)
+    @session_cost = @tutor.pricing - (params[:duration].to_i + 26000)
+
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       customer_email: current_user.email,
       line_items: [{
-        name: "Tutoring Session",
-        description: "Session with #{@tutor.user.firstname}",
-        amount: @tutor.pricing,
+        name: "Tutoring Session with #{@tutor.user.firstname} #{@tutor.user.lastname}",
+        description: "#{params[:note]}",
+        amount: @session_cost * 100,
         currency: 'aud',
         quantity: 1,
       }],
@@ -32,6 +41,7 @@ skip_before_action :verify_authenticity_token, only: [:webhook]
     )
 
     @session_id = session.id
+
   end
 
   def create
