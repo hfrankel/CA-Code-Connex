@@ -1,1 +1,22 @@
 <h1>Session Confirmation Page</h1>
+
+<div>
+  <p>Tutor: <%= @tutor.user.firstname %> <%= @tutor.user.lastname %></p>
+  <p>Session cost: $<%= @session_cost %></p>
+  <p>Session Time: <%= params[:timestamp] %> </p>
+  <p>Note: <%= params[:note] %></p>
+</div>
+
+<button data-stripe='buy' class="btn btn-primary">Purchase</button>
+
+<script src="https://js.stripe.com/v3/"></script>
+
+<script>
+  document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
+    const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
+    
+    stripe.redirectToCheckout({
+      sessionId: "<%= @session_id %>"
+    });
+  })
+</script>
