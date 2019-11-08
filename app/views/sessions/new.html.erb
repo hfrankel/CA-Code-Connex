@@ -1,24 +1,10 @@
 <h1>Session Confirmation Page</h1>
 
-<%= bootstrap_form_with( model: @session, url: create_session_path) do |form| %>
+<%= bootstrap_form_with( url: confirm_session_path, method: :get, local: true )  do |form| %>
 
       <%= form.datetime_field :timestamp, label: "Choose Date and Time" %>
       <%= form.text_area :note, label: "What would you like to learn during the session?" %>
       <%= form.number_field :duration, label: "Session Duration (mins)" %>
       <%= form.hidden_field :tutor_id, :value => params[:tutor_id] %> 
-
+      <%= form.submit "Next", class: "btn-primary btn" %>
 <% end %>
-
-<button data-stripe='buy' class="btn btn-primary">Purchase</button>
-
-<script src="https://js.stripe.com/v3/"></script>
-
-<script>
-  document.querySelector("[data-stripe='buy']").addEventListener("click", () => {
-    const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
-    
-    stripe.redirectToCheckout({
-      sessionId: "<%= @session_id %>"
-    });
-  })
-</script>
