@@ -4,10 +4,11 @@
   <p>Tutor: <%= @tutor.user.firstname %> <%= @tutor.user.lastname %></p>
   <p>Session cost: $<%= @session_cost %></p>
   <p>Session Time: <%= params[:timestamp] %> </p>
+  <p>Duration: <%= params[:duration] %> mins</p>
   <p>Note: <%= params[:note] %></p>
 </div>
 
-<button data-stripe='buy' class="btn btn-primary">Purchase</button>
+<button data-stripe='buy' class="btn btn-primary">Book</button>
 
 <script src="https://js.stripe.com/v3/"></script>
 
