@@ -15,12 +15,13 @@ Rails.application.routes.draw do
   get "/tutors/connex", to: "tutors#connex", as: "connex_search"
   get "/tutors/:id", to: "tutors#show", as: "tutor"
   get "/tutors/tutor_id/sessions/new", to: "sessions#new", as: "new_session"
-  post "/tutors/tutor_id/sessions", to: "sessions#create", as: "create_session"
   get "/tutors/tutor_id/sessions/confirm", to: "sessions#confirm", as: "confirm_session"
-
+  post "/tutors/tutor_id/sessions", to: "sessions#create", as: "create_session"
+  
   get "/sessions/success", to: "sessions#success", as: "success_sessions"
-  post "/sessions/webhook", to: "sessions#webhook", as: "session"
   get "/sessions/:id", to: "sessions#show", as: "show_sessions"
+
+  post "/payments/webhook", to: "payments#webhook"
 
   get "/tutor_account/new", to: "accounts#newtutor", as: "new_tutor_account"
   post "/tutor_account", to: "accounts#createtutor", as: "create_tutor_account"
