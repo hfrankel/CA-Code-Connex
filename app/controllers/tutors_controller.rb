@@ -21,7 +21,6 @@ class TutorsController < ApplicationController
 
   def connex
     @technologies = Technology.all
-
   end
 
 end
