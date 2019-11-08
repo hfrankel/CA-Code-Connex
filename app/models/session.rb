@@ -1,5 +1,5 @@
 class Session < ApplicationRecord
   belongs_to :tutor
   belongs_to :user
-  has_one :rating
+  has_one :payment
 end
