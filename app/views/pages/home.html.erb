@@ -1,5 +1,5 @@
 <%= provide(:home_active, "active") %>
-<main id="home">
+<main id="home" class="mb-4">
 
 
   <section class="jumbotron">
@@ -13,7 +13,7 @@
   </section>
 
   <section class="custom-card-home">
-    <div class="card-columns">
+    <div class="card-deck">
       <div class="card" class="col-sm-6 col-lg-4">
         <%= image_tag "home/student_testimonial.jpg", class: "card-img-top", alt: "portrait happy student" %>
         <div class="card-body">
@@ -23,7 +23,7 @@
             One on one sessions with an experienced dev has been incredibly beneficial to my development
             as a programmer."
           </p>
-          <%= link_to  "Find A Tutor", connex_search_path, class: "btn btn-primary" %>
+          <%= link_to  "Find A Tutor", tutors_path, class: "btn btn-primary" %>
         </div>
       </div>
 

@@ -1,1 +1,25 @@
-<h1>Here is the sessions list page</h1>
+<h1 class="mt-4"><%= "Session #{@session.id}" %></h1>
+
+  <table class=" table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Date and Time</th>
+        <th>Tutor</th>
+        <th>Duration (mins)</th>
+        <th>Note</th>
+      </tr>
+    </thead>
+
+  <tbody>
+      <tr>
+      <td><%= @session.id  %></td>
+      <td><%= @session.timestamp %></td>
+      <td><%= "#{@session.tutor.user.firstname} #{@session.tutor.user.lastname}" %></td>
+      <td><%= @session.duration %></td>
+      <td><%= @session.note %></td>
+    </tr>
+  </tbody>
+  </table>
+
+  <%= link_to 'Cancel Session',  delete_session_path,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>

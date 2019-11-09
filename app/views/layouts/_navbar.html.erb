@@ -1,35 +1,23 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="navbar-brand" href="/">Code Connex</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <%= link_to "Home", root_path, class: "nav-link #{yield(:home_active)}" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Connex", connex_search_path, class: "nav-item nav-link #{yield(:connex_active)}" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "FAQ", faq_path, class: "nav-item nav-link #{yield(:faq_active)}" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to "Account", show_account_path, class: "nav-item nav-link #{yield(:account_active)}" %>
-      </li>
-      <li class="nav-item">
-        <% if user_signed_in? %>
-          <%= link_to(destroy_user_session_path, method: :delete, class: "nav-item nav-link") do %>
-            Log&nbsp;Out
-          <% end %>
-        <% else %>
-          <%= link_to(new_user_session_path, class: "nav-item nav-link") do %>
-            Log&nbsp;In
-          <% end %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand container" href="/">Code Connex</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <%= link_to "Home", root_path, class: "nav-item nav-link #{yield(:home_active)}" %>
+      <%= link_to "Connex", tutors_path, class: "nav-item nav-link #{yield(:connex_active)}" %>
+      <%= link_to "FAQ", faq_path, class: "nav-item nav-link #{yield(:faq_active)}" %>
+      <%= link_to "Account", show_account_path, class: "nav-item nav-link #{yield(:account_active)}" %>
+      <% if user_signed_in? %>
+        <%= link_to(destroy_user_session_path, method: :delete, class: "nav-item nav-link") do %>
+          Log&nbsp;Out
         <% end %>
-      </li>
-    </ul>
+      <% else %>
+        <%= link_to(new_user_session_path, class: "nav-item nav-link") do %>
+          Log&nbsp;In
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </nav>

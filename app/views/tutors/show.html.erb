@@ -1,30 +1,16 @@
-<h1><%= @tutor.user.firstname %> <%= @tutor.user.lastname %></h1>
-<%= image_tag @tutor.user.pic, alt: "Fake profile photos using cartoon robots" %>
+<h1 class="mt-4"><%= @tutor.user.firstname %> <%= @tutor.user.lastname %></h1>
 
-<ul>
-  <li>Lead <%= @sessions_count %> sessions</li>
-  <li><%= @tutor.experience.capitalize %> Dev</li>
-  <li><%= @tutor.bio %></li>
-  <li><%= @tutor.style %></li>
-  <li>Hourly Pricing $<%= @tutor.pricing %></li>
-  <li>Average Rating <%= @ratings_avg_score %></li>
-</ul>
+<%= image_tag @tutor.user.pic, alt: "Fake profile photos using cartoon robots", class: "mb-4" %>
+<p>Session Count: <%= @sessions_count %> sessions</p>
+<p>Experience: <%= @tutor.experience.capitalize %> Dev</p>
+<p>Bio: <%= @tutor.bio %></p>
+<p>Teching Style: <%= @tutor.style %></p>
+<p>Hourly Pricing: $<%= @tutor.pricing %></p>
+<p>Tech Skills:<p>
+  <ul>
+    <% @skills.each do |skill| %>
+      <li><%= skill.name %></li>
+    <% end %>
+  </ul>
 
-<h2>Skills</h2>
-
-<h3>Master</h3>
-  <% @master_tech.each do |tech| %>
-    <%= tech.technology.name %>
-  <% end %>
-
-<h3>Experienced</h3>
-  <% @experienced_tech.each do |tech| %>
-    <%= tech.technology.name %>
-  <% end %>
-
-<h3>Fresh</h3>
-  <% @fresh_tech.each do |tech| %>
-    <%= tech.technology.name %>
-  <% end %>
-
-  <%= link_to  "Check Availability", new_session_path(:tutor_id => @tutor.id), class: "btn btn-primary" %>
+  <%= link_to  "Check Availability", new_session_path(:tutor_id => @tutor.id), class: "btn btn-primary mb-4" %>
