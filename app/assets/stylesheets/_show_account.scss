@@ -1,0 +1,17 @@
+#show-account {
+  .custom-div-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+
+  @media (min-width: 479px) {
+    .custom-div-button {
+      display: inline-block;
+      justify-content: space-around;
+      margin-bottom: 40px;
+    }
+  }
+}
