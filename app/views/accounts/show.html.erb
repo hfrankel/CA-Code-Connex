@@ -1,37 +1,38 @@
 <%= provide(:account_active, "active") %>
-
-<h2>User Profile</h2>
-<div>
-  <p>First Name: <%= @user.firstname %></p>
-  <p>Surname: <%= @user.lastname %></p>
-  <p>Email: <%= @user.email %></p>
-  <% if @active_tutor.empty? %>
-    <%= "Tutor: Inactive" %>
-  <% else %>
-  <h2>Tutor Profile</h2>
-    <hr>
-    <p><%= "Tutor: Active" %></p>
-    <p>Hourly Pricing: AUD $<%= @tutor.pricing %>
-    <p>Experience: <%= @tutor.experience.capitalize %></p>
-    <p>Bio: <%= @tutor.bio %></p>
-    <p>Teaching Style: <%= @tutor.style %></p>
-    <p>Max Session Duration: <%= @tutor.maxduration %> mins</p>
-    <p>Technologies Studied: <% @tutor.technologies.each do |tech| %>
-      <ul>
-        <li><%= "#{tech.name}" %></li>
-      </ul>
+<main id=show-account class="mt-4 mb-4">
+  <h2>User Profile</h2>
+  <div>
+    <p>First Name: <%= @user.firstname %></p>
+    <p>Surname: <%= @user.lastname %></p>
+    <p>Email: <%= @user.email %></p>
+    <% if @active_tutor.empty? %>
+      <%= "Tutor: Inactive" %>
+    <% else %>
+    <h2>Tutor Profile</h2>
+      <hr>
+      <p><%= "Tutor: Active" %></p>
+      <p>Hourly Pricing: AUD $<%= @tutor.pricing %>
+      <p>Experience: <%= @tutor.experience.capitalize %></p>
+      <p>Bio: <%= @tutor.bio %></p>
+      <p>Teaching Style: <%= @tutor.style %></p>
+      <p>Max Session Duration: <%= @tutor.maxduration %> mins</p>
+      <p>Technologies Studied: <% @tutor.technologies.each do |tech| %>
+        <ul>
+          <li><%= "#{tech.name}" %></li>
+        </ul>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+  <br>
+  <div class="custom-div-button">
+    <%= link_to  "Edit User Account", edit_user_registration_path(:id => @user.id), class: "btn btn-primary mb-2" %>
 
-<div>
-  <%= link_to  "Edit User Account", edit_user_registration_path(:id => @user.id), class: "btn btn-primary" %>
+    <% unless @active_tutor.empty? %>
+      <%= link_to  "Edit Tutor Account", edit_account_path(:id => @user.id), class: "btn btn-primary mb-2" %>
+    <% else %>
+      <%= link_to "Become A Tutor", new_tutor_account_path(:id => @user.id), class: "btn btn-primary mb-2" %> 
+    <% end %>
 
-  <% unless @active_tutor.empty? %>
-    <%= link_to  "Edit Tutor Account", edit_account_path(:id => @user.id), class: "btn btn-primary" %>
-  <% else %>
-    <%= link_to "Become A Tutor", new_tutor_account_path(:id => @user.id), class: "btn btn-primary" %> 
-  <% end %>
-
-  <%= link_to "See Sessions", show_sessions_path, class: "btn btn-primary" %>
-</div>
+    <%= link_to "See Sessions", all_sessions_path, class: "btn btn-primary mb-2" %>
+  </div>
+</main>
