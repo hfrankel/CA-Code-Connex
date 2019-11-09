@@ -16,3 +16,4 @@
 //= require_tree
 //= require jquery3
 //= require popper
+//= requre bootstrap-sprockets
