@@ -9,11 +9,3 @@
     border: none;
   }
 }
-
-@media screen and (min-width: 768px) {
-  #home {
-    .card-columns {
-      flex-direction: row;
-    }
-  }
-}
