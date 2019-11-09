@@ -1,17 +1,13 @@
 class SessionsController < ApplicationController
-before_action :authenticate_user!
+  before_action :set_session, only: [:show, :destroy]
+  before_action :authenticate_user!
 
 
   def new
     @tutor_id = params[:tutor_id]
     @tutor = Tutor.find(@tutor_id)
     @session = Session.includes(:tutor_id).new
-    # @tutor = Tutor.includes(:user).find(params[:id])
-    # scores = Tutor.find(params[:id]).ratings.pluck(:score)
-    # @ratings_avg_score = scores.sum / scores.count.to_f
     # @sessions_count = Tutor.find(params[:id]).sessions.pluck(:id).count
-
-
   end
 
   def confirm
@@ -57,6 +53,11 @@ before_action :authenticate_user!
     end
   end
 
+  def index
+    @user = current_user
+    @sessions = Session.where(user_id: current_user.id)
+  end
+
 
   def show
 
@@ -66,10 +67,26 @@ before_action :authenticate_user!
 
   end
 
+  def destroy
+    @session.destroy
+    respond_to do |format|
+      format.html { redirect_to all_sessions_url, notice: 'Session was successfully cancelled.' }
+      format.json { head :no_content }
+    end
+  end
+
 
   private
   def session_params
     params.require(:session).permit(:timestamp, :duration, :cost, :stripe, :note, :tutor_id, :user_id)
+  end
+
+  def set_session
+    @session = Session.find(params[:id])
+
+      if @session == nil
+        redirect_to all_sessions_path
+      end
   end
 
 end
