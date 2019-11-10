@@ -1,6 +1,7 @@
 class TutorsController < ApplicationController
-  
+
   def index
+    # Search for tutor by name (cap sensitive)
     if @search = params[:search]
       @tutors = Tutor.joins(:user).where("users.firstname LIKE ?", "%#{@search}%")
     else

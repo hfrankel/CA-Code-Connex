@@ -89,6 +89,7 @@ class SessionsController < ApplicationController
       end
   end
 
+  # Prevent user from picking a new session date that is before the current date / time
   def set_session_time
     if params[:timestamp].to_time < DateTime.now
       redirect_to new_session_path(:tutor_id => params[:tutor_id])

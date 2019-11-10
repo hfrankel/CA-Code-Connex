@@ -3,6 +3,7 @@ class AccountsController < ApplicationController
   before_action :set_tutor, only: [:edit, :update]
   before_action :set_experiences, only: [:newtutor, :edit]
 
+  # New tutor form
   def newtutor
     @tutor = Tutor.new
     if @tutor.save
@@ -26,6 +27,7 @@ class AccountsController < ApplicationController
 
 
   def show
+    # Prevent users from accessing account without logging in
     if current_user == nil
       redirect_to new_user_session_path
     else
@@ -70,13 +72,9 @@ class AccountsController < ApplicationController
     @experiences = Tutor.experiences.keys
   end
 
+  # Whitelist params
   def tutor_params
     params.require(:tutor).permit(:pricing, :experience, :bio, :style, :maxduration, technology_ids: [])
   end
-
-  # Convert pricing
-  # def translate_params
-  #   params[:tutor][:experience] = (params[:tutor][:experience].downcase)
-  # end
 
 end
