@@ -10,13 +10,35 @@
 
 # push various ids into separate arrays
 
-for i in 1..20
-  tech_ids = Technology.all.pluck(:id)
+techs = [
+  { name: "Ruby" },
+  { name: "Ruby on Rails"},
+  { name: "JavaScript"},
+  { name: "Python"},
+  { name: ".Net"},
+  { name: "React"},
+  { name: "Node JS"},
+  { name: "C#"},
+  { name: "Elixir"},
+  { name: "TypeScript"},
+  { name: "F#"},
+  { name: "C"},
+  { name: "Objective C"},
+  { name: "Java"},
+  { name: "Go"},
+  { name: "PHP"},
+  { name: "SQL"},
+  { name: "Postgres"},
+  { name: "MongoDB"},
+  { name: "MariaDB"},
+  { name: "C++"}
+]
 
-  tech = Technology.create(
-    name: Faker::ProgrammingLanguage.name
-  )
-  puts "Added #{tech.name}"
+if Technology.count == 0 
+  for tech in techs
+      tech = Technology.create(tech)
+      puts "created #{tech.name}"
+  end
 end
   
 for i in 1..30
@@ -42,12 +64,12 @@ while unique_user_ids.length < 10
   unique_user_ids = unique_user_ids.uniq
 end
 
-for i in 1..10
+for i in 1..20
 
   tutor = Tutor.create(
-    pricing: rand(15..400),
+    pricing: rand(1500..40000),
     experience: rand(0..2),
-    bio: Faker::Lorem.paragraph,
+    bio: Faker::Quote.yoda,
     style: Faker::Hacker.say_something_smart,
     active: rand(2) == 1,
     maxduration: rand(15..120),
@@ -71,8 +93,6 @@ for i in 1..20
   session = Session.create(
     timestamp: Faker::Time.forward(days: 23, period: :morning),
     duration: rand(15..120),
-    cost: rand(500..60000),
-    stripe: Faker::Internet.password(min_length: 8, max_length: 8),
     note: Faker::Quote.famous_last_words,
     tutor_id: tutor,
     user_id: user
@@ -96,6 +116,5 @@ for i in 1..20
   techtutor = TechnologiesTutor.create(
     tutor_id: rand(1..10),
     technology_id: rand(1..20),
-    level: rand(0..2)
   )
 end
