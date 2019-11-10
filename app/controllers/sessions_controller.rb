@@ -1,20 +1,20 @@
 class SessionsController < ApplicationController
   before_action :set_session, only: [:show, :destroy]
+  before_action :set_session_time, only: [:confirm]
   before_action :authenticate_user!
-
 
   def new
     @tutor_id = params[:tutor_id]
     @tutor = Tutor.find(@tutor_id)
     @session = Session.includes(:tutor_id).new
-    # @sessions_count = Tutor.find(params[:id]).sessions.pluck(:id).count
   end
 
   def confirm
 
     @tutor_id = params[:tutor_id]
     @tutor = Tutor.find(@tutor_id)
-    @session_cost = @tutor.pricing + (params[:duration].to_i)
+    @session_cost_remove_decimal = @tutor.pricing * ((params[:duration].to_f / 60.0 * 100).to_i)
+    @session_cost = @session_cost_remove_decimal / 100
 
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
       line_items: [{
         name: "Tutoring Session with #{@tutor.user.firstname} #{@tutor.user.lastname}",
         description: "#{params[:note]}",
-        amount: @session_cost * 100,
+        amount: @session_cost,
         currency: 'aud',
         quantity: 1,
       }],
@@ -89,4 +89,9 @@ class SessionsController < ApplicationController
       end
   end
 
+  def set_session_time
+    if params[:timestamp].to_time < DateTime.now
+      redirect_to new_session_path(:tutor_id => params[:tutor_id])
+    end
+  end
 end
