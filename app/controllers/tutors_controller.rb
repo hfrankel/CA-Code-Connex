@@ -11,14 +11,11 @@ class TutorsController < ApplicationController
   def show
     @tutor = Tutor.includes(:technologies_tutors, :technologies).find(params[:id])
     @sessions_count = Tutor.find(params[:id]).sessions.pluck(:id).count
-
-    @master_tech = @tutor.technologies_tutors.select { |i| i.level == "master" }
-    @experienced_tech = @tutor.technologies_tutors.select { |i| i.level == "experienced" }
-    @fresh_tech = @tutor.technologies_tutors.select { |i| i.level == "fresh" }
+    @skills = Tutor.find(params[:id]).technologies
   end
 
   def connex
     @technologies = Technology.all
   end
-
+  
 end
