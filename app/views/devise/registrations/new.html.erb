@@ -5,12 +5,12 @@
 
   <div class="field">
     <%= f.label :firstname, "First Name" %><br />
-    <%= f.text_field :firstname, class: "form-control" %> <br />
+    <%= f.text_field :firstname, required: :true, class: "form-control" %> <br />
   </div>
 
   <div class="field">
     <%= f.label :lastname, "Surname" %><br />
-    <%= f.text_field :lastname, class: "form-control" %> <br />
+    <%= f.text_field :lastname, required: :true, class: "form-control" %> <br />
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field mb-2">
     <%= f.label :pic, "Profile Picture" %><br />
-    <%= f.file_field :pic,  class: "form-control-file" %>
+    <%= f.file_field :pic, required: :true, class: "form-control-file" %>
   </div>
 
   <div class="actions mb-2">
