@@ -5,7 +5,7 @@
 <p>Experience: <%= @tutor.experience.capitalize %> Dev</p>
 <p>Bio: <%= @tutor.bio %></p>
 <p>Teching Style: <%= @tutor.style %></p>
-<p>Hourly Pricing: $<%= @tutor.pricing %></p>
+<p>Hourly Pricing: $<%= @tutor.pricing / 100 %></p>
 <p>Tech Skills:<p>
   <ul>
     <% @skills.each do |skill| %>

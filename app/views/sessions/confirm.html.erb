@@ -2,7 +2,7 @@
 
 <div>
   <p>Tutor: <%= @tutor.user.firstname %> <%= @tutor.user.lastname %></p>
-  <p>Session cost: $<%= @session_cost %></p>
+  <p>Session cost: $<%= @session_cost / 100 %></p>
   <p>Session Time: <%= params[:timestamp] %> </p>
   <p>Duration: <%= params[:duration] %> mins</p>
   <p>Note: <%= params[:note] %></p>
