@@ -3,11 +3,11 @@
 <h2>Tutor Profile</h2>
 
   <%= bootstrap_form_with(model: @tutor, url: update_account_path, local: true) do |f| %>
-    <%= f.number_field :pricing, label: "Hourly Pricing ($)" %>
+    <%= f.number_field :pricing, required: :true, label: "Hourly Pricing ($)" %>
     <%= f.select :experience, @experiences.map { |experience| [experience.capitalize, experience]} %>
-    <%= f.text_area :bio %>
-    <%= f.text_area :style, label: "Teaching Style" %>
-    <%= f.number_field :maxduration, label: "Max Session Duration (mins)" %>
+    <%= f.text_area :bio, required: :true %>
+    <%= f.text_area :style, label: "Teaching Style", required: :true %>
+    <%= f.number_field :maxduration, label: "Max Session Duration (mins)", required: :true %>
     <%= f.collection_check_boxes :technologies, Technology.all, :id, :name %>
     <%= f.submit "Confirm", class: "btn-primary btn" %>
   <% end %>
